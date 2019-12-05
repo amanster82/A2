@@ -6,6 +6,26 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/a945945', {useNewUrlParser: true});
+
+var db = mongoose.connection;
+db.on('error', function() {
+  console.log('Error connecting to mongodb....');
+  process.exit(1);
+});
+
+db.once('open', function() {
+  console.log('Opened mongodb connection....');
+});
+
+
+process.on('SIGINT', () => {
+  mongoose.connection.close(() => {
+    console.log('Closing the mongodb connection');
+  });
+});
+
 var app = express();
 
 app.use(logger('dev'));
