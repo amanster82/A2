@@ -5,7 +5,7 @@ $(function ready() {
 
             console.log(item);
             let pizza = item.size + '<br>' + item.crust + '<br>' + item.meats + '<br>' + item.veggies;
-            let address = item.house+" "+item.street + '<br>' + item.city + '<br>' + item.postal;
+            let address = item.house + " " + item.street + '<br>' + item.city + '<br>' + item.postal;
 
             let col_1 = '<td>' + count + '</td>';
             let col_2 = '<td>' + pizza + '</td>';
@@ -15,8 +15,8 @@ $(function ready() {
             let col_6 = '<td>' + item.totalCost + '</td>';
 
             $('#orderLine').append(
-            
-            '<tr>' +col_1+ col_2+ col_3+ col_4+ col_5+ col_6+ '</tr>');
+
+                '<tr>' + col_1 + col_2 + col_3 + col_4 + col_5 + col_6 + '</tr>');
 
             count++;
         });
@@ -24,14 +24,14 @@ $(function ready() {
 });
 
 
-$(function ready(){
-    $('#search').keyup(function(){
+$(function ready() {
+    $('#search').keyup(function (e) {
         var txt = $(this).val();
         console.log(txt);
 
-        var query = JSON.stringify({search: txt})
+        var query = JSON.stringify({ search: txt })
 
-        if(txt != ""){
+        if (txt != null) {
             $.ajax({
                 url: '/api/lookup',
                 type: 'POST',
@@ -42,7 +42,28 @@ $(function ready(){
                     console.log(json)
                     console.log(status)
                     console.log(request)
-                    $('#orderLine').html(request);
+
+                    let count = 1
+                    let data = '';
+                    json.forEach(function (item) {
+
+                        console.log(item);
+                        let pizza = item.size + '<br>' + item.crust + '<br>' + item.meats + '<br>' + item.veggies;
+                        let address = item.house + " " + item.street + '<br>' + item.city + '<br>' + item.postal;
+
+                        let col_1 = '<td>' + count + '</td>';
+                        let col_2 = '<td>' + pizza + '</td>';
+                        let col_3 = '<td>' + item.name + '</td>';
+                        let col_4 = '<td>' + item.phone + '</td>';
+                        let col_5 = '<td>' + address + '</td>';
+                        let col_6 = '<td>' + item.totalCost + '</td>';
+
+                        data += '<tr>' + col_1 + col_2 + col_3 + col_4 + col_5 + col_6 + '</tr>';
+
+                        count++;
+                    });
+
+                   $('#orderLine').html(data);
                 },
                 error: function (request, status) {
 
@@ -50,7 +71,10 @@ $(function ready(){
             });
         }
 
-    })
+    });
+
+
+
 
 });
 

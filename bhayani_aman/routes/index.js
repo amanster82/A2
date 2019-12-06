@@ -63,17 +63,17 @@ router.get('/api/order', (req, res)=> {
 
 router.post('/api/lookup', (req, res)=> {
   console.log("getting the search...");
-  //console.log(req.body);
+  console.log(req.body);
+  let search = req.body.search;
   
-  Order.find({}, (err, orders)=> {
+  Order.find({name: new RegExp(search) }, (err, orders)=> {
       if (err) {
         res.status(500).json({status : "Error retrieving orders"});
         return;
       }
      res.json(orders)
-      
-     
-  }).limit(3);
+     //console.log(orders)
+  })
 });
 
 module.exports = router;
