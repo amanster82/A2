@@ -1,14 +1,13 @@
-class PriceCalculator{
+class PriceCalculator {
 
-    constructor(body){
+    constructor(body) {
         this.size = body.size;
         this.crust = body.crust;
         this.meats = body.meats;
         this.veggies = body.veggies;
         this.taxPercent = body.tax;
-      
     }
-    
+
     CalculateOrder() {
 
         let sizeCost = 0;
@@ -33,16 +32,16 @@ class PriceCalculator{
         let veggiesCost = 0.5;
         let veggiesCount = (this.veggies).length;
 
-        let orderTotal = sizeCost+crustCost+(meatCost*meatCount)+(veggiesCost*veggiesCount);
+        let orderTotal = sizeCost + crustCost + (meatCost * meatCount) + (veggiesCost * veggiesCount);
         return orderTotal;
     }
 
-    CalculateSalesTax(orderTotal){
-        let taxAmount = orderTotal*(this.taxPercent/100);
+    CalculateSalesTax(orderTotal) {
+        let taxAmount = orderTotal * (this.taxPercent / 100);
         return taxAmount;
     }
 
-    CalculateTotal(orderTotal, taxAmount){
+    CalculateTotal(orderTotal, taxAmount) {
         return orderTotal + taxAmount;
     }
 

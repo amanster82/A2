@@ -20,6 +20,7 @@ router.post('/api/order', (req, res)=> {
   let totalCost = orderTotal+taxAmount;
 
   let obj = req.body;
+
   obj.orderTotal = orderTotal;
   obj.taxAmount = taxAmount;
   obj.totalCost = totalCost
@@ -45,6 +46,34 @@ router.post('/api/order', (req, res)=> {
 
   // res.json({status : "success", message : "Added a course"});
 
+});
+
+
+router.get('/api/order', (req, res)=> {
+  Order.find({}, (err, orders)=> {
+      if (err) {
+        res.status(500).json({status : "Error retrieving orders"});
+        return;
+      }
+      res.json(orders);
+  }).limit(10);
+});
+
+
+
+router.post('/api/lookup', (req, res)=> {
+  console.log("getting the search...");
+  //console.log(req.body);
+  
+  Order.find({}, (err, orders)=> {
+      if (err) {
+        res.status(500).json({status : "Error retrieving orders"});
+        return;
+      }
+     res.json(orders)
+      
+     
+  }).limit(3);
 });
 
 module.exports = router;

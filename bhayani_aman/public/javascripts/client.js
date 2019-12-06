@@ -21,12 +21,17 @@ $(function ready() {
             meats: selectedMeats,
             veggies: selectedVeggies,
             tax: 5,
-            phone: Number($('#phone').val()),
+            name: $('#name').val(),
+            phone: Number(   ($('#phone').val()).replace(/[^0-9]/g, '')  ),
             house: Number($('#house').val()),
             street: $('#street').val(),
             city: $('#city').val(),
-            pcode: $('#pcode').val()
+            postal: $('#pcode').val()
         });
+
+
+        console.log("pizzaInfo");
+        console.log(pizzaInfo);
 
         $.ajax({
             url: '/api/order',
