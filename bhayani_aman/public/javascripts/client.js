@@ -22,7 +22,7 @@ $(function ready() {
             veggies: selectedVeggies,
             tax: 5,
             name: $('#name').val(),
-            phone: Number(   ($('#phone').val()).replace(/[^0-9]/g, '')  ),
+            phone:($('#phone').val()).replace(/[^0-9]/g, ''),
             house: Number($('#house').val()),
             street: $('#street').val(),
             city: $('#city').val(),

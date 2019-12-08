@@ -65,15 +65,29 @@ router.post('/api/lookup', (req, res)=> {
   console.log("getting the search...");
   console.log(req.body);
   let search = req.body.search;
-  
-  Order.find({name: new RegExp(search) }, (err, orders)=> {
+
+  if(isNaN(search)){
+    Order.find({name: new RegExp(search)}, (err, orders)=> {
+        if (err) {
+          res.status(500).json({status : "Error retrieving orders"});
+          return;
+        }
+      res.json(orders)
+      //console.log(orders)
+    })
+  }else{
+    Order.find({phone: new RegExp(search)}, (err, orders)=> {
       if (err) {
         res.status(500).json({status : "Error retrieving orders"});
         return;
       }
-     res.json(orders)
-     //console.log(orders)
+    res.json(orders)
+    //console.log(orders)
   })
+
+  }
+
+
 });
 
 module.exports = router;

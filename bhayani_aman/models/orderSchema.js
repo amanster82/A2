@@ -7,7 +7,7 @@ var orderSchema = new mongoose.Schema({
     veggies: [],
     tax: Number,
     name: String,
-    phone: Number,
+    phone: String,
     house: Number,
     street: String,
     city: String,
