@@ -21,26 +21,23 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <a class="navbar-brand" href="/index.html">Pizza Express</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/order.html">Order</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/orderList.html">Order List</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -58,9 +55,12 @@
             <div class="card card-body">
                 <div class="input-group flex-nowrap">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+                        <span class="input-group-text" id="addon-wrapping">
+                            <i class="fas fa-search"></i>
+                        </span>
                     </div>
-                    <input id="search" placeholder="Search by phone number or customer name" type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    <input autocomplete="off" id="search" placeholder="Search by phone number or customer name" type="text" class="form-control" aria-label="Username"
+                        aria-describedby="addon-wrapping">
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Order Number</th>
+                            <th scope="col">List Number</th>
                             <th scope="col">Pizza</th>
                             <th scope="col">Customer Name</th>
                             <th scope="col">Customer Phone</th>

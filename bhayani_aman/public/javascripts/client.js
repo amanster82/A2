@@ -40,9 +40,7 @@ $(function ready() {
             dataType: 'json',
             data: pizzaInfo,
             success: function (json, status, request) {
-                $('#statusMsg').removeClass();
-                $('#statusMsg').addClass('alert alert-success');
-                $('#statusMsg').html('Added the course');
+                $('#splash').html('<br><br><div class="alert alert-success" role="alert">Your Order Has Been Confirmed!<br>Your pizza will arrive in 15 minutes!</div>')
             },
             error: function (request, status) {
                 $('#statusMsg').removeClass();
